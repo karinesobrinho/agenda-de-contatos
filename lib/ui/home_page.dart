@@ -1,5 +1,7 @@
 //import 'dart:html';
 
+import 'dart:io';
+
 import 'package:agenda_de_contatos/helpers/contact_helper.dart';
 import 'package:agenda_de_contatos/ui/contact_page.dart';
 import 'package:flutter/material.dart';
@@ -61,10 +63,11 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: //contacts[index].img != null ?
-                          //FileImage(File(contacts[index].img)) :
-                          AssetImage("images/person.png"),
-                      fit: BoxFit.cover),
+                        image: contacts[index].img != null ?
+                          FileImage(File(contacts[index].img)) :
+                            AssetImage("images/person.png"),
+                        fit: BoxFit.cover
+                    ),
                 ),
               ),
               Padding(
