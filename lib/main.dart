@@ -5,6 +5,6 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: 'agenda de contatos',
-    home: ContactPage(),
+    home: HomePage(),
   ));
 }

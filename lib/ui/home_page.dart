@@ -1,6 +1,7 @@
 //import 'dart:html';
 
 import 'package:agenda_de_contatos/helpers/contact_helper.dart';
+import 'package:agenda_de_contatos/ui/contact_page.dart';
 import 'package:flutter/material.dart';
 import '../helpers/contact_helper.dart';
 
@@ -35,7 +36,9 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          _showContactPage();
+        },
         backgroundColor: Colors.red,
       ),
       body: ListView.builder(
@@ -61,11 +64,10 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: //contacts[index].img != null ?
-                      //FileImage(File(contacts[index].img)) :
-                      AssetImage("images/person.png"),
-                      fit: BoxFit.cover
-                  ),
+                      image: //contacts[index].img != null ?
+                          //FileImage(File(contacts[index].img)) :
+                          AssetImage("images/person.png"),
+                      fit: BoxFit.cover),
                 ),
               ),
               Padding(
@@ -94,6 +96,18 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      onDoubleTap: () {
+        _showContactPage(contact: contacts[index]);
+      },
     );
+  }
+
+  void _showContactPage({Contact contact}) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ContactPage(
+                  contact: contact,
+                )));
   }
 }
