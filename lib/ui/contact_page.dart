@@ -78,6 +78,14 @@ class _ContactPageState extends State<ContactPage> {
                           fit: BoxFit.cover),
                     ),
                   ),
+                  onTap: (){
+                    ImagePicker.pickImage(source: ImageSource.camera).then((file){
+                      if(file == null) return;
+                      setState(() {
+                        _editedContact.img = file.path;
+                      });
+                    });
+                },
                 ),
                 TextField(
                   controller: _nameController,
